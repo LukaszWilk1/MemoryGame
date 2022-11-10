@@ -6,111 +6,51 @@
   background-color: #222831;
 }
 
+header {
+  height: 15vh;
+  width: 100%;
+  position: relative;
+  color: #FD7014;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 h1 {
   margin: 0 auto;
-  color: #FD7014;
-  font-size: 5.5em;
-  font-family: 'Source Sans Pro', sans-serif;
-  padding: 0.5em;
-  text-shadow: 2px 2px #393E46;
+  font-size: 8.8vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 nav {
-  width: 30%;
-  height: 700px;
-  position: absolute;
-  z-index: -1;
+  position: relative;
+  display: block;
 }
 
 p {
-  font-size: 3em;
   font-weight: bold;
   color: #FD7014;
   position: absolute;
   left: 50%;
   top: 20%;
   transform: translate(-50%, -50%);
-  z-index: 1;
 }
 
 .stoper {
-  height: 250px;
-  width: 300px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-main {
-  width: 70%;
-  height: 700px;
-  position: absolute;
-  margin-left: 30%;
-}
-
-table {
-  border-collapse: collapse;
-  overflow: visible;
-}
-
-td {
-  height: 154px;
-  width: 154px;
-  border: 4px solid #FD7014;
-  transition: 0.15s;
-}
-
-.card-one{
-  background-image: url("images/one.png");
-}
-
-.card-two{
-  background-image: url("images/two.png");
-}
-
-.card-three{
-  background-image: url("images/three.png");
-}
-
-.card-four{
-  background-image: url("images/four.png");
-}
-
-.card-five{
-  background-image: url("images/five.png");
-}
-
-.card-six{
-  background-image: url("images/six.png");
-}
-
-.card-seven{
-  background-image: url("images/seven.png");
-}
-
-.card-eight{
-  background-image: url("images/eight.png");
-}
-
-td:hover {
-  background-color: #393E46;
-  transition: 0.15s;
-  cursor: pointer;
-}
-
-button {
+button{
   background-color: #FD7014;
   color: #393E46;
-  width: 7em;
-  height: 2em;
-  border-radius: 10px;
-  font-size: 1.5em;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #FD7014;
   transition: 0.15s;
 }
 
@@ -121,15 +61,67 @@ button:hover {
   cursor: pointer;
 }
 
-.table-container {
-  height: 616px;
-  width: 616px;
-  background-color: red;
-  position: absolute;
+main {
+  position: relative;
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: none;
+}
+
+td {
+  transition: 0.15s;
+  background-size: 100%;
+}
+
+td:hover {
+  background-color: #393E46;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+footer {
+  height: 15vh;
+  width: 100%;
+  position: relative;
+  clear: both;
+}
+
+.card-one {
+  background-image: url("images/one.png");
+}
+
+.card-two {
+  background-image: url("images/two.png");
+}
+
+.card-three {
+  background-image: url("images/three.png");
+}
+
+.card-four {
+  background-image: url("images/four.png");
+}
+
+.card-five {
+  background-image: url("images/five.png");
+}
+
+.card-six {
+  background-image: url("images/six.png");
+}
+
+.card-seven {
+  background-image: url("images/seven.png");
+}
+
+.card-eight {
+  background-image: url("images/eight.png");
 }
 
 .no-border-top {
@@ -146,4 +138,167 @@ button:hover {
 
 .no-border-right {
   border-right: none;
+}
+
+@media screen and (min-width: 1201px) {
+
+  h1 {
+    font-size: 8.8vh;
+  }
+
+  nav {
+    width: 30%;
+    height: 70vh;
+    float: left;
+  }
+
+  p {
+    font-size: 7vh;
+  }
+
+  .stoper {
+    height: 30vh;
+    width: 40vh;
+  }
+
+  button {
+    width: 60%;
+    height: 20%;
+    border-radius: 10px;
+    font-size: 3.5vh;
+    border: 0.1vh solid #FD7014;
+  }
+
+  main {
+    width: 70%;
+    height: 70vh;
+    float: left;
+  }
+
+  td {
+    height: 17.5vh;
+    width: 17.5vh;
+    border: 0.4vh solid #FD7014;
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 7.8vh;
+  }
+
+  nav {
+    width: 30%;
+    height: 70vh;
+    float: left;
+  }
+
+  td {
+    height: 15.5vh;
+    width: 15.5vh;
+    border: 0.4vh solid #FD7014;
+  }
+
+  p {
+    font-size: 5vh;
+  }
+
+  .stoper {
+    height: 25vh;
+    width: 35vh;
+  }
+
+  button {
+    width: 50%;
+    height: 18%;
+    border-radius: 10px;
+    font-size: 2.5vh;
+    border: 0.1vh solid #FD7014;
+  }
+
+  main {
+    width: 70%;
+    height: 70vh;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 6vh;
+  }
+
+  td {
+    height: 13.5vh;
+    width: 13.5vh;
+    border: 0.3vh solid #FD7014;
+  }
+
+  p {
+    font-size: 3vh;
+  }
+
+  .stoper {
+    height: 20vh;
+    width: 30vh;
+  }
+
+  button {
+    background-color: #FD7014;
+    color: #393E46;
+    width: 50%;
+    height: 18%;
+    border-radius: 10px;
+    font-size: 2.5vh;
+    border: 0.1vh solid #FD7014;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 4.5vh;
+  }
+
+  nav{
+    width: 100%;
+    height: 15vh;
+  }
+
+  main{
+    width: 100%;
+    height: 50vh;
+  }
+
+  td {
+    height: 11.5vh;
+    width: 11.5vh;
+    border: 0.2vh solid #FD7014;
+  }
+
+  p {
+    font-size: 3.5vh;
+    position: relative;
+  }
+
+  .stoper {
+    height: 15vh;
+    width: 25vh;
+  }
+
+  button {
+    background-color: #FD7014;
+    color: #393E46;
+    width: 50%;
+    height: 18%;
+    border-radius: 10px;
+    font-size: 2.5vh;
+    border: 0.1vh solid #FD7014;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 4vh;
+  }
 }
