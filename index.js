@@ -55,11 +55,25 @@ const shuffle = () => {
 }
 const reverse = card => {
   card.classList.add(cards[cards.map(object => object.card).indexOf(card)].value);
+  card.classList.add("unclicable");
 }
 for (let i = 0; i < 16; i++) {
   cards[i].value = shuffle();                              //callback to shuffle function
   cards[i].card=document.getElementsByTagName("td")[i];
   document.getElementsByTagName("td")[i].addEventListener("click", (e) => {
+    turnedCards++;
+    if(turnedCards==2){
+      for(let i=0; i<cards.length; i++){
+        cards[i].card.classList.add("unclicable");
+      }
+      setTimeout(()=>{
+        for(let i=0; i<cards.length; i++){
+          cards[i].card.classList = "";
+          turnedCards=0;
+        }
+      }, 750);
+    }
+    console.log(firstCard, secondCard);
     e.target.classList.add(e.target.getAttribute("value"));                     //showing card on click by passing value element to class
     reverse(e.target);
   })
