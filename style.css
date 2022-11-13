@@ -149,8 +149,13 @@ footer {
   border-right: none;
 }
 
-.unclicable {
+.unclicable{
   pointer-events: none;
+}
+
+.winner{
+  pointer-events: none;
+  background-color: #FD7014;
 }
 
 @media screen and (min-width: 1201px) {

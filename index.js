@@ -56,6 +56,37 @@ const shuffle = () => {
 const reverse = card => {
   card.classList.add(cards[cards.map(object => object.card).indexOf(card)].value);
   card.classList.add("unclicable");
+  if(turnedCards==1) firstCard = cards[cards.map(object => object.card).indexOf(card)].value;
+  else if(turnedCards==2) secondCard = cards[cards.map(object => object.card).indexOf(card)].value;
+  console.log(firstCard, secondCard);
+}
+const check = () => {
+  if(turnedCards==2){
+    for(let i=0; i<cards.length; i++){
+      cards[i].card.classList.add("unclicable");
+    }
+    if(firstCard===secondCard){
+      for(let i=0; i<cards.length;i++){
+        if(cards[i].card.classList.contains("card-one")||cards[i].card.classList.contains("card-two")||cards[i].card.classList.contains("card-three")
+        ||cards[i].card.classList.contains("card-four")||cards[i].card.classList.contains("card-five")||cards[i].card.classList.contains("card-six")
+        ||cards[i].card.classList.contains("card-seven")||cards[i].card.classList.contains("card-eight")){
+          cards[i].card.classList="";
+          cards[i].card.classList.add("winner");
+        }
+      }
+    }
+    else{
+      for(let i=0; i<cards.length; i++){
+        if(cards[i].card.classList.contains("winner")) continue;
+        cards[i].card.classList = "";
+      }
+    }
+    for(let i=0; i<cards.length; i++){
+      if(cards[i].card.classList.contains("winner")) continue;
+      cards[i].card.classList = "";
+    }
+  }
+  turnedCards=0;
 }
 for (let i = 0; i < 16; i++) {
   cards[i].value = shuffle();                              //callback to shuffle function
@@ -67,14 +98,9 @@ for (let i = 0; i < 16; i++) {
         cards[i].card.classList.add("unclicable");
       }
       setTimeout(()=>{
-        for(let i=0; i<cards.length; i++){
-          cards[i].card.classList = "";
-          turnedCards=0;
-        }
-      }, 750);
+        check();
+      }, 1000);
     }
-    console.log(firstCard, secondCard);
-    e.target.classList.add(e.target.getAttribute("value"));                     //showing card on click by passing value element to class
     reverse(e.target);
   })
 }
