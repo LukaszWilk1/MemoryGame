@@ -103,6 +103,16 @@ const stoper = () => {
     document.getElementById("seconds").innerHTML=seconds;
   }
   seconds++;
+  if(seconds==60){
+    seconds=00;
+    minutes++;
+    if(minutes<=9){
+      document.getElementById("minutes").innerHTML="0"+minutes;
+    }
+    else if(minutes>9){
+      document.getElementById("minutes").innerHTML=minutes;
+    }
+  }
 }
 
 const game = e => {
