@@ -24,23 +24,70 @@ let pictures = [
   "card-eight",
   "card-eight"
 ];
-let cards = [
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
-  {card: undefined, value:undefined},
+let cards = [{
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
+  {
+    card: undefined,
+    value: undefined
+  },
 ];
 /*const shuffle = arg => {
   index = Math.floor(Math.random() * pictures.length);                          //getting random number and asigning it to variable index
@@ -48,13 +95,23 @@ let cards = [
   pictures.splice(index, 1);                                                    //removing already used element from pictures list
 }*/
 
+const stoper = () => {
+  if(seconds<=9){
+    document.getElementById("seconds").innerHTML="0"+seconds;
+  }
+  else if(seconds>9){
+    document.getElementById("seconds").innerHTML=seconds;
+  }
+  seconds++;
+}
+
 const game = e => {
   turnedCards++;
-  if(turnedCards==2){
-    for(let i=0; i<cards.length; i++){
+  if (turnedCards == 2) {
+    for (let i = 0; i < cards.length; i++) {
       cards[i].card.classList.add("unclicable");
     }
-    setTimeout(()=>{
+    setTimeout(() => {
       check();
     }, 750);
   }
@@ -62,13 +119,16 @@ const game = e => {
 }
 
 const start = e => {
+  clearInterval(Interval);
+  Interval = setInterval(stoper, 1000);
   console.log(pictures);
-  document.getElementById("start").innerText="Start";
+  document.getElementById("start").innerText = "Start";
+  stoper();
   for (let i = 0; i < 16; i++) {
-    cards[i].value = shuffle();                              //callback to shuffle function
-    cards[i].card=document.getElementsByTagName("td")[i];
+    cards[i].value = shuffle(); //callback to shuffle function
+    cards[i].card = document.getElementsByTagName("td")[i];
     document.getElementsByTagName("td")[i].addEventListener("click", game);
-    document.getElementById("start").style="visibility: hidden";
+    document.getElementById("start").style = "visibility: hidden";
     document.getElementById("start").removeEventListener("click", start);
   }
 }
@@ -83,12 +143,14 @@ const shuffle = () => {
 const reverse = card => {
   card.classList.add(cards[cards.map(object => object.card).indexOf(card)].value);
   card.classList.add("unclicable");
-  if(turnedCards==1) firstCard = cards[cards.map(object => object.card).indexOf(card)].value;
-  else if(turnedCards==2) secondCard = cards[cards.map(object => object.card).indexOf(card)].value;
+  if (turnedCards == 1) firstCard = cards[cards.map(object => object.card).indexOf(card)].value;
+  else if (turnedCards == 2) secondCard = cards[cards.map(object => object.card).indexOf(card)].value;
   console.log(firstCard, secondCard);
 }
 
 const reset = e => {
+  document.getElementById("seconds").innerHTML="00";
+  document.getElementById("minutes").innerHTML="00";
   turnedCards = 0;
   firstCard;
   secondCard;
@@ -114,49 +176,49 @@ const reset = e => {
     "card-eight",
     "card-eight"
   ];
-  for(let i=0;i<16;i++){
+  for (let i = 0; i < 16; i++) {
     cards[i].value = undefined;
-    cards[i].card.classList="";
-    cards[i].card=undefined;
+    cards[i].card.classList = "";
+    cards[i].card = undefined;
     document.getElementsByTagName("td")[i].removeEventListener("click", game);
   }
-  document.getElementById("start").innerText="Start";
+  document.getElementById("start").innerText = "Start";
   document.getElementById("start").removeEventListener("click", reset)
   document.getElementById("start").addEventListener("click", start);
 }
 
 const check = () => {
-  if(turnedCards==2){
-    for(let i=0; i<cards.length; i++){
+  if (turnedCards == 2) {
+    for (let i = 0; i < cards.length; i++) {
       cards[i].card.classList.add("unclicable");
     }
-    if(firstCard===secondCard){
-      for(let i=0; i<cards.length;i++){
-        if(cards[i].card.classList.contains("card-one")||cards[i].card.classList.contains("card-two")||cards[i].card.classList.contains("card-three")
-        ||cards[i].card.classList.contains("card-four")||cards[i].card.classList.contains("card-five")||cards[i].card.classList.contains("card-six")
-        ||cards[i].card.classList.contains("card-seven")||cards[i].card.classList.contains("card-eight")){
-          cards[i].card.classList="";
+    if (firstCard === secondCard) {
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].card.classList.contains("card-one") || cards[i].card.classList.contains("card-two") || cards[i].card.classList.contains("card-three") ||
+          cards[i].card.classList.contains("card-four") || cards[i].card.classList.contains("card-five") || cards[i].card.classList.contains("card-six") ||
+          cards[i].card.classList.contains("card-seven") || cards[i].card.classList.contains("card-eight")) {
+          cards[i].card.classList = "";
           cards[i].card.classList.add("winner");
           cards[i].card.classList.add("unclicable");
         }
       }
       pairs++;
-    }
-    else{
-      for(let i=0; i<cards.length; i++){
-        if(cards[i].card.classList.contains("winner")) continue;
+    } else {
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].card.classList.contains("winner")) continue;
         cards[i].card.classList = "";
       }
     }
-    for(let i=0; i<cards.length; i++){
-      if(cards[i].card.classList.contains("winner")) continue;
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].card.classList.contains("winner")) continue;
       cards[i].card.classList = "";
     }
   }
-  turnedCards=0;
-  if(pairs===8){
-    document.getElementById("start").innerText="Restart";
-    document.getElementById("start").style="visibility: visible";
+  turnedCards = 0;
+  if (pairs === 8) {
+    clearInterval(Interval);
+    document.getElementById("start").innerText = "Restart";
+    document.getElementById("start").style = "visibility: visible";
     document.getElementById("start").addEventListener("click", reset);
     console.log(cards);
   }
